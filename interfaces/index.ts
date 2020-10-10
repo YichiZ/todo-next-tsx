@@ -8,3 +8,10 @@ export type User = {
   id: number
   name: string
 }
+
+export type TodoItem = {
+  id: number
+  title: string
+  userId: number
+  completed: boolean
+}
