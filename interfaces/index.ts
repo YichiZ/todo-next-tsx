@@ -5,13 +5,13 @@
 // import User from 'path/to/interfaces';
 
 export type User = {
-  id: number
-  name: string
-}
+  id: number;
+  name: string;
+};
 
 export type TodoItem = {
-  id: number
-  title: string
-  userId: number
-  completed: boolean
-}
+  id: number;
+  title: string;
+  userId: number;
+  completed: boolean;
+};
