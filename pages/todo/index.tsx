@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import { useState } from "react";
 import AddTodo from "../../components/AddTodo";
+import Save from "../../components/Save";
 import TodoItem from "../../components/TodoItem";
 import { TodoItemModel } from "../../interfaces/index";
 
@@ -51,6 +52,7 @@ function Todo({ initialTodos }: Props) {
           />
         ))}
       </ul>
+      <Save todos={todos} />
     </div>
   );
 }
@@ -61,7 +63,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     `https://jsonplaceholder.typicode.com/todos?_start=0&_limit=${initTodosNumber}`
   );
   const initialTodos: TodoItemModel[] = await response.json();
-  console.log(process.env.Key);
+  console.log(process.env.MONGODB_URI);
 
   return {
     props: {

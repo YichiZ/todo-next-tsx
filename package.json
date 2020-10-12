@@ -8,6 +8,8 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@types/mongodb": "^3.5.27",
+    "mongodb": "^3.6.2",
     "next": "latest",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
