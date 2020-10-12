@@ -23,7 +23,18 @@ function TodoItem({ todo, onEditTodo, onDeleteTodo }: Props) {
         >
           Complete
         </button>
-        {todo.title}
+        <input
+          type="text"
+          value={todo.title}
+          onChange={(e) =>
+            onEditTodo({
+              id: todo.id,
+              title: e.target.value,
+              completed: todo.completed,
+              userId: todo.userId,
+            })
+          }
+        ></input>
         <button className="delete" onClick={() => onDeleteTodo(todo)}>
           Delete
         </button>

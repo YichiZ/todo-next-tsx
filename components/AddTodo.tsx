@@ -15,6 +15,7 @@ function AddTodo({ onAddTodo }: Props) {
           type="text"
           value={todoText}
           onChange={(e) => setTodoText(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && onAddTodo(todoText)}
         ></input>
       </label>
       <button
