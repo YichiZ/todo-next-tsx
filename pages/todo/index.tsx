@@ -61,6 +61,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     `https://jsonplaceholder.typicode.com/todos?_start=0&_limit=${initTodosNumber}`
   );
   const initialTodos: TodoItemModel[] = await response.json();
+  console.log(process.env.Key);
 
   return {
     props: {
