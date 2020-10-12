@@ -1,5 +1,4 @@
 import { GetServerSideProps } from "next";
-import Link from "next/link";
 import Layout from "../components/Layout";
 import { connectToDatabase } from "../utils/mongodb";
 
