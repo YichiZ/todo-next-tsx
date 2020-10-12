@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from "react";
+import { useState } from "react";
 
 type Props = {
   onAddTodo: (text: string) => void;
@@ -7,13 +7,8 @@ type Props = {
 function AddTodo({ onAddTodo }: Props) {
   const [todoText, setTodoText] = useState("");
 
-  const handleSubmit = (event: SyntheticEvent) => {
-    event.preventDefault();
-    onAddTodo(todoText);
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="addTodo">
       <label>
         Add todo:
         <input
@@ -22,8 +17,14 @@ function AddTodo({ onAddTodo }: Props) {
           onChange={(e) => setTodoText(e.target.value)}
         ></input>
       </label>
-      <input type="submit" value="Add"></input>
-    </form>
+      <button
+        className="submit"
+        type="button"
+        onClick={() => onAddTodo(todoText)}
+      >
+        Add
+      </button>
+    </div>
   );
 }
 

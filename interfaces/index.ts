@@ -9,7 +9,7 @@ export type User = {
   name: string;
 };
 
-export type TodoItem = {
+export type TodoItemModel = {
   id: number;
   title: string;
   userId: number;
