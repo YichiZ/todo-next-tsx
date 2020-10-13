@@ -1,9 +1,10 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import { useState } from "react";
 import AddTodo from "../../components/AddTodo";
 import Save from "../../components/Save";
 import TodoItem from "../../components/TodoItem";
 import { TodoItemModel } from "../../interfaces/index";
+import { connectToDatabase } from "../../utils/mongodb";
 
 type Props = {
   initialTodos: TodoItemModel[];
@@ -58,11 +59,9 @@ function Todo({ initialTodos }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const initTodosNumber = 5;
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/todos?_start=0&_limit=${initTodosNumber}`
-  );
-  const initialTodos: TodoItemModel[] = await response.json();
+  const response = await fetch(`http://localhost:3000/api/todos`);
+  let initialTodos: TodoItemModel[] = await response.json();
+
   console.log(process.env.MONGODB_URI);
 
   return {
@@ -71,5 +70,4 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     },
   };
 };
-
 export default Todo;
