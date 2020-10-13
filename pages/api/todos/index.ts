@@ -29,6 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         );
         todos = await response.json();
         res.status(200).json(todos);
+        break;
       }
 
       res.status(200).json(todos);
