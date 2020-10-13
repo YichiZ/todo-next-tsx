@@ -65,8 +65,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const response = await fetch(`${location}/api/todos`);
   let initialTodos: TodoItemModel[] = await response.json();
 
-  console.log(process.env.MONGODB_URI);
-
   return {
     props: {
       initialTodos,
