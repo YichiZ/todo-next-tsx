@@ -5,7 +5,7 @@ import Save from "../../components/Save";
 import TodoItem from "../../components/TodoItem";
 import { TodoItemModel } from "../../interfaces/index";
 import fetch from "node-fetch";
-import { getLocation } from "../../utils/utilsFunctions";
+import { absoluteUrl } from "../../utils/utilsFunctions";
 
 type Props = {
   initialTodos: TodoItemModel[];
@@ -59,10 +59,8 @@ function Todo({ initialTodos }: Props) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async (
-  context
-) => {
-  const location = getLocation(context);
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const location = absoluteUrl(process.env.VERCEL_URL as string);
 
   const response = await fetch(`${location}/api/todos`);
   let initialTodos: TodoItemModel[] = await response.json();
