@@ -12,7 +12,7 @@ function Save({ todos }: Props) {
       window.location.hostname +
       (window.location.port ? ":" + window.location.port : "");
 
-    const res = await fetch(`${url}/api/todos`, {
+    await fetch(`${url}/api/todos`, {
       method: "POST",
       body: JSON.stringify(todos),
     });

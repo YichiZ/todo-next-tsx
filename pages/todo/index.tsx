@@ -1,10 +1,11 @@
-import { GetServerSideProps, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import { useState } from "react";
 import AddTodo from "../../components/AddTodo";
 import Save from "../../components/Save";
 import TodoItem from "../../components/TodoItem";
 import { TodoItemModel } from "../../interfaces/index";
-import { connectToDatabase } from "../../utils/mongodb";
+import fetch from "node-fetch";
+import { getLocation } from "../../utils/utilsFunctions";
 
 type Props = {
   initialTodos: TodoItemModel[];
@@ -58,8 +59,12 @@ function Todo({ initialTodos }: Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const response = await fetch(`http://localhost:3000/api/todos`);
+export const getServerSideProps: GetServerSideProps<Props> = async (
+  context
+) => {
+  const location = getLocation(context);
+
+  const response = await fetch(`${location}/api/todos`);
   let initialTodos: TodoItemModel[] = await response.json();
 
   console.log(process.env.MONGODB_URI);
