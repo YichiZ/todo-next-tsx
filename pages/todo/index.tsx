@@ -60,7 +60,7 @@ function Todo({ initialTodos }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const location = absoluteUrl(process.env.VERCEL_URL as string);
+  const location = absoluteUrl();
 
   const response = await fetch(`${location}/api/todos`);
   let initialTodos: TodoItemModel[] = await response.json();
