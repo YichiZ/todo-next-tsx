@@ -1,5 +1,12 @@
-import Webcam from "../../components/Webcam";
+import Webcam from "react-webcam";
+import React from "react";
 
 export default function VideoChat() {
-  return <Webcam />;
+  const webCamRef = React.useRef(null);
+
+  return (
+    <div>
+      <Webcam ref={webCamRef} />;
+    </div>
+  );
 }
